@@ -1,0 +1,7 @@
+[pre_model_sync]
+
+[post_model_sync]
+hr_ai_agents.patches.v0_2.enable_release2_agents
+hr_ai_agents.patches.v0_3.add_export_tool
+hr_ai_agents.patches.v0_3.add_collaboration
+hr_ai_agents.patches.v0_3.add_knowledge_base

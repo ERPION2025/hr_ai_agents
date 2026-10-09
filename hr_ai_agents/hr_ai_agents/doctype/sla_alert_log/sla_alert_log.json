@@ -1,0 +1,149 @@
+{
+ "doctype": "DocType",
+ "name": "SLA Alert Log",
+ "module": "HR AI Agents",
+ "engine": "InnoDB",
+ "custom": 0,
+ "fields": [
+  {
+   "fieldname": "rule",
+   "fieldtype": "Link",
+   "label": "Rule",
+   "options": "SLA Rule",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "label": "Record type",
+   "options": "DocType",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "reference_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Record",
+   "options": "reference_doctype",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "level",
+   "fieldtype": "Select",
+   "label": "Level",
+   "options": "Due Soon\nBreached\nEscalated",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Pending Review\nSent\nNotified in-app\nDismissed",
+   "default": "Pending Review",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "elapsed_days",
+   "fieldtype": "Float",
+   "label": "Elapsed (days)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "target_days",
+   "fieldtype": "Float",
+   "label": "Target (days)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "recipients",
+   "fieldtype": "Small Text",
+   "label": "Recipients",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sent_on",
+   "fieldtype": "Datetime",
+   "label": "Sent on",
+   "read_only": 1
+  },
+  {
+   "fieldname": "message",
+   "fieldtype": "Text",
+   "label": "Message"
+  }
+ ],
+ "field_order": [
+  "rule",
+  "reference_doctype",
+  "reference_name",
+  "level",
+  "status",
+  "c1",
+  "elapsed_days",
+  "target_days",
+  "recipients",
+  "sent_on",
+  "message"
+ ],
+ "permissions": [
+  {
+   "role": "AI Agent Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "write": 1
+  },
+  {
+   "role": "HR Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "write": 1
+  },
+  {
+   "role": "HR User",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "write": 1
+  },
+  {
+   "role": "AI Agent User",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "write": 1
+  },
+  {
+   "role": "AI Compliance Auditor",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  }
+ ],
+ "istable": 0,
+ "issingle": 0,
+ "track_changes": 0,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "modified": "2026-10-07 12:00:00.000000",
+ "owner": "Administrator",
+ "editable_grid": 0,
+ "links": [],
+ "autoname": "SLAAL-.#######"
+}

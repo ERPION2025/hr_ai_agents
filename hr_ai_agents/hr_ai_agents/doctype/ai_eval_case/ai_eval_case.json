@@ -1,0 +1,185 @@
+{
+ "doctype": "DocType",
+ "name": "AI Eval Case",
+ "module": "HR AI Agents",
+ "engine": "InnoDB",
+ "custom": 0,
+ "fields": [
+  {
+   "fieldname": "case_name",
+   "fieldtype": "Data",
+   "label": "Case name",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled",
+   "default": "1",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "case_type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "Chat\nATS",
+   "default": "Chat",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "agent",
+   "fieldtype": "Link",
+   "label": "Agent",
+   "options": "AI Agent Profile",
+   "depends_on": "eval:doc.case_type=='Chat'"
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "What this protects against"
+  },
+  {
+   "fieldname": "s2",
+   "fieldtype": "Section Break",
+   "label": "Chat case",
+   "depends_on": "eval:doc.case_type=='Chat'"
+  },
+  {
+   "fieldname": "prompt",
+   "fieldtype": "Small Text",
+   "label": "Prompt"
+  },
+  {
+   "fieldname": "must_contain",
+   "fieldtype": "Small Text",
+   "label": "Answer must contain (one per line, any case)"
+  },
+  {
+   "fieldname": "must_not_contain",
+   "fieldtype": "Small Text",
+   "label": "Answer must not contain (one per line)"
+  },
+  {
+   "fieldname": "expect_tools",
+   "fieldtype": "Small Text",
+   "label": "Tools that must be called (one per line)"
+  },
+  {
+   "fieldname": "forbid_tools",
+   "fieldtype": "Small Text",
+   "label": "Tools that must not be called (one per line)"
+  },
+  {
+   "fieldname": "s3",
+   "fieldtype": "Section Break",
+   "label": "ATS golden case",
+   "depends_on": "eval:doc.case_type=='ATS'"
+  },
+  {
+   "fieldname": "cv_text",
+   "fieldtype": "Long Text",
+   "label": "CV text"
+  },
+  {
+   "fieldname": "ats_must_have",
+   "fieldtype": "Small Text",
+   "label": "Must-have skills"
+  },
+  {
+   "fieldname": "ats_nice_have",
+   "fieldtype": "Small Text",
+   "label": "Nice-to-have skills"
+  },
+  {
+   "fieldname": "ats_min_years",
+   "fieldtype": "Float",
+   "label": "Minimum years"
+  },
+  {
+   "fieldname": "ats_expect_matched",
+   "fieldtype": "Small Text",
+   "label": "Must be matched (one per line)"
+  },
+  {
+   "fieldname": "ats_expect_missing",
+   "fieldtype": "Small Text",
+   "label": "Must be missing (one per line)"
+  },
+  {
+   "fieldname": "ats_min_score",
+   "fieldtype": "Int",
+   "label": "Score at least"
+  },
+  {
+   "fieldname": "ats_max_score",
+   "fieldtype": "Int",
+   "label": "Score at most",
+   "default": "100"
+  }
+ ],
+ "field_order": [
+  "case_name",
+  "enabled",
+  "case_type",
+  "agent",
+  "c1",
+  "description",
+  "s2",
+  "prompt",
+  "must_contain",
+  "must_not_contain",
+  "expect_tools",
+  "forbid_tools",
+  "s3",
+  "cv_text",
+  "ats_must_have",
+  "ats_nice_have",
+  "ats_min_years",
+  "ats_expect_matched",
+  "ats_expect_missing",
+  "ats_min_score",
+  "ats_max_score"
+ ],
+ "permissions": [
+  {
+   "role": "AI Agent Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "export": 0
+  },
+  {
+   "role": "AI Compliance Auditor",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "write": 1,
+   "create": 1
+  }
+ ],
+ "istable": 0,
+ "issingle": 0,
+ "track_changes": 0,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "modified": "2026-10-07 12:00:00.000000",
+ "owner": "Administrator",
+ "editable_grid": 0,
+ "links": [],
+ "autoname": "field:case_name"
+}

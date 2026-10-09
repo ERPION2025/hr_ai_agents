@@ -1,0 +1,233 @@
+{
+ "doctype": "Workspace",
+ "name": "AI Governance",
+ "label": "AI Governance",
+ "title": "AI Governance",
+ "module": "HR AI Agents",
+ "public": 1,
+ "is_hidden": 0,
+ "sequence_id": 99,
+ "icon": "shield",
+ "description": "Monitoring and configuration for optional AI agents",
+ "content": "[{\"id\": \"h1\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>AI Governance</b></span>\", \"col\": 12}}, {\"id\": \"sp\", \"type\": \"paragraph\", \"data\": {\"text\": \"Monitor who asked which agent to do what, what it read or created, token usage and cost, security events and findings. Agents are optional; manual processes are unchanged.\", \"col\": 12}}, {\"id\": \"s0\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"AI Agent Settings\", \"col\": 3}}, {\"id\": \"s1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"AI Agent Profile\", \"col\": 3}}, {\"id\": \"s2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"AI Agent Run Log\", \"col\": 3}}, {\"id\": \"s3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"AI Session Log\", \"col\": 3}}, {\"id\": \"s4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"AI Security Log\", \"col\": 3}}, {\"id\": \"s5\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"AI Data Access Log\", \"col\": 3}}, {\"id\": \"s6\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"AI Finding\", \"col\": 3}}, {\"id\": \"s7\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"AI Daily Report\", \"col\": 3}}, {\"id\": \"s8\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"SLA Alert Log\", \"col\": 3}}, {\"id\": \"s9\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Applicant ATS Result\", \"col\": 3}}, {\"id\": \"s10x\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"AI Proposal\", \"col\": 3}}, {\"id\": \"s11x\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"AI Policy Document\", \"col\": 3}}, {\"id\": \"s12x\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"AI Data Subject Request\", \"col\": 3}}, {\"id\": \"s13x\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"AI Eval Case\", \"col\": 3}}, {\"id\": \"s14x\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"AI Eval Run\", \"col\": 3}}, {\"id\": \"s15x\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"AI Compliance Pack\", \"col\": 3}}, {\"id\": \"sc_aifaq\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"AI FAQ\", \"col\": 3}}, {\"id\": \"sc_aiquickaction\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"AI Quick Action\", \"col\": 3}}, {\"id\": \"h2\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h5\\\"><b>Reports and configuration</b></span>\", \"col\": 12}}, {\"id\": \"c_Reports\", \"type\": \"card\", \"data\": {\"card_name\": \"Reports\", \"col\": 4}}, {\"id\": \"c_Configuration\", \"type\": \"card\", \"data\": {\"card_name\": \"Configuration\", \"col\": 4}}]",
+ "shortcuts": [
+  {
+   "label": "AI Agent Settings",
+   "link_to": "AI Agent Settings",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Grey"
+  },
+  {
+   "label": "AI Agent Profile",
+   "link_to": "AI Agent Profile",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Grey"
+  },
+  {
+   "label": "AI Agent Run Log",
+   "link_to": "AI Agent Run Log",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Grey"
+  },
+  {
+   "label": "AI Session Log",
+   "link_to": "AI Session Log",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Grey"
+  },
+  {
+   "label": "AI Security Log",
+   "link_to": "AI Security Log",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Grey"
+  },
+  {
+   "label": "AI Data Access Log",
+   "link_to": "AI Data Access Log",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Grey"
+  },
+  {
+   "label": "AI Finding",
+   "link_to": "AI Finding",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Grey"
+  },
+  {
+   "label": "AI Daily Report",
+   "link_to": "AI Daily Report",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Grey"
+  },
+  {
+   "label": "SLA Alert Log",
+   "link_to": "SLA Alert Log",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Grey"
+  },
+  {
+   "label": "Applicant ATS Result",
+   "link_to": "Applicant ATS Result",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Grey"
+  },
+  {
+   "label": "AI Proposal",
+   "link_to": "AI Proposal",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Grey"
+  },
+  {
+   "label": "AI Policy Document",
+   "link_to": "AI Policy Document",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Grey"
+  },
+  {
+   "label": "AI Data Subject Request",
+   "link_to": "AI Data Subject Request",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Grey"
+  },
+  {
+   "label": "AI Eval Case",
+   "link_to": "AI Eval Case",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Grey"
+  },
+  {
+   "label": "AI Eval Run",
+   "link_to": "AI Eval Run",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Grey"
+  },
+  {
+   "label": "AI Compliance Pack",
+   "link_to": "AI Compliance Pack",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Grey"
+  },
+  {
+   "label": "AI FAQ",
+   "link_to": "AI FAQ",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Grey"
+  },
+  {
+   "label": "AI Quick Action",
+   "link_to": "AI Quick Action",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Grey"
+  }
+ ],
+ "links": [
+  {
+   "type": "Card Break",
+   "label": "Reports",
+   "hidden": 0,
+   "is_query_report": 0,
+   "onboard": 0,
+   "link_count": 2
+  },
+  {
+   "type": "Link",
+   "label": "AI Agent Performance",
+   "link_to": "AI Agent Performance",
+   "link_type": "Report",
+   "hidden": 0,
+   "is_query_report": 1,
+   "onboard": 0,
+   "dependencies": "AI Agent Run Log"
+  },
+  {
+   "type": "Link",
+   "label": "AI Usage by User",
+   "link_to": "AI Usage by User",
+   "link_type": "Report",
+   "hidden": 0,
+   "is_query_report": 1,
+   "onboard": 0,
+   "dependencies": "AI Agent Run Log"
+  },
+  {
+   "type": "Card Break",
+   "label": "Configuration",
+   "hidden": 0,
+   "is_query_report": 0,
+   "onboard": 0,
+   "link_count": 4
+  },
+  {
+   "type": "Link",
+   "label": "SLA Rule",
+   "link_to": "SLA Rule",
+   "link_type": "DocType",
+   "hidden": 0,
+   "is_query_report": 0,
+   "onboard": 0,
+   "dependencies": ""
+  },
+  {
+   "type": "Link",
+   "label": "Completeness Rule",
+   "link_to": "Completeness Rule",
+   "link_type": "DocType",
+   "hidden": 0,
+   "is_query_report": 0,
+   "onboard": 0,
+   "dependencies": ""
+  },
+  {
+   "type": "Link",
+   "label": "Job Opening ATS Criteria",
+   "link_to": "Job Opening ATS Criteria",
+   "link_type": "DocType",
+   "hidden": 0,
+   "is_query_report": 0,
+   "onboard": 0,
+   "dependencies": ""
+  },
+  {
+   "type": "Link",
+   "label": "AI User Preference",
+   "link_to": "AI User Preference",
+   "link_type": "DocType",
+   "hidden": 0,
+   "is_query_report": 0,
+   "onboard": 0,
+   "dependencies": ""
+  }
+ ],
+ "roles": [
+  {
+   "role": "AI Agent Manager"
+  },
+  {
+   "role": "AI Compliance Auditor"
+  },
+  {
+   "role": "System Manager"
+  }
+ ],
+ "charts": [],
+ "number_cards": [],
+ "modified": "2026-10-07 12:00:00.000000"
+}

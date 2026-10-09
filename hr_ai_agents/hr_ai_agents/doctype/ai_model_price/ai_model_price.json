@@ -1,0 +1,48 @@
+{
+ "doctype": "DocType",
+ "name": "AI Model Price",
+ "module": "HR AI Agents",
+ "engine": "InnoDB",
+ "custom": 0,
+ "fields": [
+  {
+   "fieldname": "model",
+   "fieldtype": "Data",
+   "label": "Model / deployment",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 4
+  },
+  {
+   "fieldname": "input_per_million",
+   "fieldtype": "Float",
+   "label": "Input price per 1M tokens",
+   "precision": "6",
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "output_per_million",
+   "fieldtype": "Float",
+   "label": "Output price per 1M tokens",
+   "precision": "6",
+   "in_list_view": 1,
+   "columns": 3
+  }
+ ],
+ "field_order": [
+  "model",
+  "input_per_million",
+  "output_per_million"
+ ],
+ "permissions": [],
+ "istable": 1,
+ "issingle": 0,
+ "track_changes": 0,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "modified": "2026-10-07 12:00:00.000000",
+ "owner": "Administrator",
+ "editable_grid": 1,
+ "links": []
+}

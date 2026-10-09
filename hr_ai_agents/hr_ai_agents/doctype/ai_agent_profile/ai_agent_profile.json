@@ -1,0 +1,226 @@
+{
+ "doctype": "DocType",
+ "name": "AI Agent Profile",
+ "module": "HR AI Agents",
+ "engine": "InnoDB",
+ "custom": 0,
+ "fields": [
+  {
+   "fieldname": "agent_name",
+   "fieldtype": "Data",
+   "label": "Agent name",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "release",
+   "fieldtype": "Select",
+   "label": "Release",
+   "options": "R1\nR2\nR3",
+   "default": "R1",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled",
+   "in_list_view": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "role",
+   "fieldtype": "Link",
+   "label": "Operates under role",
+   "options": "Role",
+   "reqd": 1,
+   "in_list_view": 1,
+   "description": "Effective permission = requesting user AND this role. Change freely; no code change needed."
+  },
+  {
+   "fieldname": "service_user",
+   "fieldtype": "Link",
+   "label": "Service identity",
+   "options": "User",
+   "read_only": 1,
+   "description": "Disabled user holding only this role; cannot log in."
+  },
+  {
+   "fieldname": "additional_roles",
+   "fieldtype": "Table",
+   "label": "Additional roles",
+   "options": "AI Agent Role",
+   "description": "Agent permission = union of the primary role and these. Add a role if the agent reports 'permission denied' on a doctype it needs."
+  },
+  {
+   "fieldname": "owner_user",
+   "fieldtype": "Link",
+   "label": "Owner / DPO contact",
+   "options": "User"
+  },
+  {
+   "fieldname": "s2",
+   "fieldtype": "Section Break",
+   "label": "Purpose and what it can do"
+  },
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Small Text",
+   "label": "Purpose"
+  },
+  {
+   "fieldname": "can_do",
+   "fieldtype": "Small Text",
+   "label": "Can do"
+  },
+  {
+   "fieldname": "cannot_do",
+   "fieldtype": "Small Text",
+   "label": "Cannot do",
+   "default": "Delete, submit, approve, reject, cancel or change workflow state. Write outside its own draft/finding records."
+  },
+  {
+   "fieldname": "c2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "lawful_basis",
+   "fieldtype": "Select",
+   "label": "Lawful basis",
+   "options": "Employment\nLegal obligation\nConsent\nLegitimate use"
+  },
+  {
+   "fieldname": "data_categories",
+   "fieldtype": "Small Text",
+   "label": "Personal data categories used"
+  },
+  {
+   "fieldname": "s3",
+   "fieldtype": "Section Break",
+   "label": "Model and limits"
+  },
+  {
+   "fieldname": "model",
+   "fieldtype": "Data",
+   "label": "Model override",
+   "description": "Blank = default model in settings"
+  },
+  {
+   "fieldname": "max_output_tokens",
+   "fieldtype": "Int",
+   "label": "Max output tokens",
+   "default": "1500"
+  },
+  {
+   "fieldname": "monthly_token_budget",
+   "fieldtype": "Int",
+   "label": "Monthly token budget"
+  },
+  {
+   "fieldname": "max_runs_per_day",
+   "fieldtype": "Int",
+   "label": "Max runs per day"
+  },
+  {
+   "fieldname": "autonomy",
+   "fieldtype": "Select",
+   "label": "Autonomy",
+   "options": "Assist\nDraft",
+   "default": "Assist"
+  },
+  {
+   "fieldname": "s4",
+   "fieldtype": "Section Break",
+   "label": "Instructions and tools"
+  },
+  {
+   "fieldname": "system_prompt",
+   "fieldtype": "Long Text",
+   "label": "System prompt"
+  },
+  {
+   "fieldname": "allowed_tools",
+   "fieldtype": "Table",
+   "label": "Allowed tools",
+   "options": "AI Agent Tool Allow"
+  }
+ ],
+ "field_order": [
+  "agent_name",
+  "title",
+  "release",
+  "enabled",
+  "c1",
+  "role",
+  "service_user",
+  "additional_roles",
+  "owner_user",
+  "s2",
+  "purpose",
+  "can_do",
+  "cannot_do",
+  "c2",
+  "lawful_basis",
+  "data_categories",
+  "s3",
+  "model",
+  "max_output_tokens",
+  "monthly_token_budget",
+  "max_runs_per_day",
+  "autonomy",
+  "s4",
+  "system_prompt",
+  "allowed_tools"
+ ],
+ "permissions": [
+  {
+   "role": "AI Agent Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "export": 0
+  },
+  {
+   "role": "AI Agent User",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "AI Compliance Auditor",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  }
+ ],
+ "istable": 0,
+ "issingle": 0,
+ "track_changes": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "modified": "2026-10-07 12:00:00.000000",
+ "owner": "Administrator",
+ "editable_grid": 0,
+ "links": [],
+ "autoname": "field:agent_name",
+ "title_field": "agent_name"
+}

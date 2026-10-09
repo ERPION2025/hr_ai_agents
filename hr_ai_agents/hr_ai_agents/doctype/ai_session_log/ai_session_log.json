@@ -1,0 +1,116 @@
+{
+ "doctype": "DocType",
+ "name": "AI Session Log",
+ "module": "HR AI Agents",
+ "engine": "InnoDB",
+ "custom": 0,
+ "fields": [
+  {
+   "fieldname": "session_user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "trigger",
+   "fieldtype": "Select",
+   "label": "Trigger",
+   "options": "User\nScheduler",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "started",
+   "fieldtype": "Datetime",
+   "label": "Started",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "last_active",
+   "fieldtype": "Datetime",
+   "label": "Last active",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "run_count",
+   "fieldtype": "Int",
+   "label": "Requests",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ip_address",
+   "fieldtype": "Data",
+   "label": "IP address",
+   "read_only": 1
+  },
+  {
+   "fieldname": "user_agent",
+   "fieldtype": "Small Text",
+   "label": "Browser / device",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sid_hash",
+   "fieldtype": "Data",
+   "label": "Session id (hashed)",
+   "read_only": 1
+  }
+ ],
+ "field_order": [
+  "session_user",
+  "trigger",
+  "started",
+  "last_active",
+  "run_count",
+  "c1",
+  "ip_address",
+  "user_agent",
+  "sid_hash"
+ ],
+ "permissions": [
+  {
+   "role": "AI Agent Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "AI Compliance Auditor",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "AI Agent User",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "if_owner": 1
+  }
+ ],
+ "istable": 0,
+ "issingle": 0,
+ "track_changes": 0,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "modified": "2026-10-07 12:00:00.000000",
+ "owner": "Administrator",
+ "editable_grid": 0,
+ "links": [],
+ "autoname": "AISESS-.#####"
+}

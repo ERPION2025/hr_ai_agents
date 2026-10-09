@@ -1,0 +1,549 @@
+{
+ "doctype": "DocType",
+ "name": "AI Agent Settings",
+ "module": "HR AI Agents",
+ "engine": "InnoDB",
+ "custom": 0,
+ "fields": [
+  {
+   "fieldname": "sec_general",
+   "fieldtype": "Section Break",
+   "label": "General"
+  },
+  {
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enable AI agents",
+   "description": "Off by default. While off, the app does nothing and all manual processes are unchanged."
+  },
+  {
+   "fieldname": "kill_switch",
+   "fieldtype": "Check",
+   "label": "Kill switch (stop everything now)"
+  },
+  {
+   "fieldname": "kill_reason",
+   "fieldtype": "Data",
+   "label": "Reason / who switched off",
+   "depends_on": "kill_switch"
+  },
+  {
+   "fieldname": "model_calls_approved",
+   "fieldtype": "Check",
+   "label": "Model data transfer approved by DPO",
+   "description": "Tick only after the DPO has approved sending data to the configured provider/region. Until ticked, no model is called (deterministic features such as ATS keyword match, SLA and report figures still work)."
+  },
+  {
+   "fieldname": "sec_provider",
+   "fieldtype": "Section Break",
+   "label": "Provider and model"
+  },
+  {
+   "fieldname": "provider",
+   "fieldtype": "Select",
+   "label": "Provider",
+   "options": "Azure OpenAI\nAnthropic",
+   "default": "Azure OpenAI"
+  },
+  {
+   "fieldname": "default_model",
+   "fieldtype": "Data",
+   "label": "Default model (Azure: deployment name)"
+  },
+  {
+   "fieldname": "fallback_model",
+   "fieldtype": "Data",
+   "label": "Fallback model"
+  },
+  {
+   "fieldname": "col_p1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "azure_endpoint",
+   "fieldtype": "Data",
+   "label": "Azure OpenAI endpoint",
+   "description": "e.g. https://<resource>.openai.azure.com",
+   "depends_on": "eval:doc.provider=='Azure OpenAI'"
+  },
+  {
+   "fieldname": "azure_api_version",
+   "fieldtype": "Data",
+   "label": "Azure API version",
+   "default": "2024-10-21",
+   "depends_on": "eval:doc.provider=='Azure OpenAI'"
+  },
+  {
+   "fieldname": "azure_api_key",
+   "fieldtype": "Password",
+   "label": "Azure OpenAI API key",
+   "depends_on": "eval:doc.provider=='Azure OpenAI'"
+  },
+  {
+   "fieldname": "anthropic_api_key",
+   "fieldtype": "Password",
+   "label": "Anthropic API key (testing)",
+   "depends_on": "eval:doc.provider=='Anthropic'"
+  },
+  {
+   "fieldname": "anthropic_workspace_id",
+   "fieldtype": "Data",
+   "label": "Anthropic workspace ID (only if your key is not workspace-scoped)",
+   "depends_on": "eval:doc.provider=='Anthropic'",
+   "description": "Sent as the anthropic-workspace-id header. Leave blank when the key was created inside a workspace."
+  },
+  {
+   "fieldname": "request_timeout",
+   "fieldtype": "Int",
+   "label": "Request timeout (seconds)",
+   "default": "60"
+  },
+  {
+   "fieldname": "sec_limits",
+   "fieldtype": "Section Break",
+   "label": "Token budgets and limits"
+  },
+  {
+   "fieldname": "monthly_token_budget",
+   "fieldtype": "Int",
+   "label": "Monthly token budget (all agents)",
+   "description": "0 = no limit"
+  },
+  {
+   "fieldname": "daily_token_budget",
+   "fieldtype": "Int",
+   "label": "Daily token budget (all agents)"
+  },
+  {
+   "fieldname": "per_user_daily_token_budget",
+   "fieldtype": "Int",
+   "label": "Daily token budget per user"
+  },
+  {
+   "fieldname": "col_l1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "per_run_token_cap",
+   "fieldtype": "Int",
+   "label": "Per-run token cap",
+   "default": "40000"
+  },
+  {
+   "fieldname": "max_tool_steps",
+   "fieldtype": "Int",
+   "label": "Max tool steps per run",
+   "default": "6"
+  },
+  {
+   "fieldname": "per_user_runs_per_hour",
+   "fieldtype": "Int",
+   "label": "Requests per user per hour",
+   "default": "30"
+  },
+  {
+   "fieldname": "over_budget_action",
+   "fieldtype": "Select",
+   "label": "When a budget is reached",
+   "options": "Block\nUse fallback model",
+   "default": "Block"
+  },
+  {
+   "fieldname": "sec_prices",
+   "fieldtype": "Section Break",
+   "label": "Price table (for cost reporting)"
+  },
+  {
+   "fieldname": "prices",
+   "fieldtype": "Table",
+   "label": "Model prices",
+   "options": "AI Model Price"
+  },
+  {
+   "fieldname": "sec_atlas",
+   "fieldtype": "Section Break",
+   "label": "Atlas: daily report"
+  },
+  {
+   "fieldname": "atlas_enabled",
+   "fieldtype": "Check",
+   "label": "Send daily EOD report",
+   "default": "1"
+  },
+  {
+   "fieldname": "atlas_time",
+   "fieldtype": "Time",
+   "label": "Report time (local)",
+   "default": "22:00:00"
+  },
+  {
+   "fieldname": "timezone",
+   "fieldtype": "Data",
+   "label": "Timezone",
+   "default": "Asia/Qatar"
+  },
+  {
+   "fieldname": "col_a1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "atlas_recipients",
+   "fieldtype": "Small Text",
+   "label": "Recipients (emails, comma separated)"
+  },
+  {
+   "fieldname": "atlas_plan_limit",
+   "fieldtype": "Int",
+   "label": "Max Workforce Plans per report",
+   "default": "50"
+  },
+  {
+   "fieldname": "atlas_include_weekends",
+   "fieldtype": "Check",
+   "label": "Run on Friday and Saturday too",
+   "default": "1"
+  },
+  {
+   "fieldname": "sec_tara",
+   "fieldtype": "Section Break",
+   "label": "Tara: SLA reminders"
+  },
+  {
+   "fieldname": "tara_enabled",
+   "fieldtype": "Check",
+   "label": "Run SLA scan hourly",
+   "default": "1"
+  },
+  {
+   "fieldname": "sla_auto_send",
+   "fieldtype": "Check",
+   "label": "Send reminders automatically",
+   "description": "Off = reminders are queued as 'Pending Review' and a person sends them with one click. On = reminders and alerts are sent by Tara (never decisions)."
+  },
+  {
+   "fieldname": "col_t1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sla_quiet_start",
+   "fieldtype": "Time",
+   "label": "Quiet hours start (local)",
+   "default": "20:00:00"
+  },
+  {
+   "fieldname": "sla_quiet_end",
+   "fieldtype": "Time",
+   "label": "Quiet hours end (local)",
+   "default": "07:00:00"
+  },
+  {
+   "fieldname": "sec_sentinel",
+   "fieldtype": "Section Break",
+   "label": "Sentinel: anomaly and completeness"
+  },
+  {
+   "fieldname": "sentinel_enabled",
+   "fieldtype": "Check",
+   "label": "Run nightly scan",
+   "default": "1"
+  },
+  {
+   "fieldname": "sentinel_time",
+   "fieldtype": "Time",
+   "label": "Nightly scan time (local)",
+   "default": "02:00:00"
+  },
+  {
+   "fieldname": "col_s1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sentinel_lookback_days",
+   "fieldtype": "Int",
+   "label": "Scan records modified in the last N days",
+   "default": "90"
+  },
+  {
+   "fieldname": "sentinel_doctypes",
+   "fieldtype": "Small Text",
+   "label": "Doctypes to scan (one per line)"
+  },
+  {
+   "fieldname": "sec_ats",
+   "fieldtype": "Section Break",
+   "label": "Meera: ATS resume match"
+  },
+  {
+   "fieldname": "ats_auto_score",
+   "fieldtype": "Check",
+   "label": "Auto-score new CVs",
+   "description": "Off by default. When on, a CV is scored in the background when attached to a Job Applicant."
+  },
+  {
+   "fieldname": "w_must",
+   "fieldtype": "Int",
+   "label": "Weight: must-have skills",
+   "default": "40"
+  },
+  {
+   "fieldname": "w_nice",
+   "fieldtype": "Int",
+   "label": "Weight: nice-to-have skills",
+   "default": "15"
+  },
+  {
+   "fieldname": "w_exp",
+   "fieldtype": "Int",
+   "label": "Weight: experience",
+   "default": "20"
+  },
+  {
+   "fieldname": "w_role",
+   "fieldtype": "Int",
+   "label": "Weight: role fit",
+   "default": "10"
+  },
+  {
+   "fieldname": "col_w1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "w_edu",
+   "fieldtype": "Int",
+   "label": "Weight: education / certifications",
+   "default": "5"
+  },
+  {
+   "fieldname": "w_loc",
+   "fieldtype": "Int",
+   "label": "Weight: location",
+   "default": "5"
+  },
+  {
+   "fieldname": "w_sal",
+   "fieldtype": "Int",
+   "label": "Weight: salary vs band",
+   "default": "5"
+  },
+  {
+   "fieldname": "band_strong",
+   "fieldtype": "Int",
+   "label": "Band: Strong from",
+   "default": "80"
+  },
+  {
+   "fieldname": "band_good",
+   "fieldtype": "Int",
+   "label": "Band: Good from",
+   "default": "60"
+  },
+  {
+   "fieldname": "band_partial",
+   "fieldtype": "Int",
+   "label": "Band: Partial from",
+   "default": "40"
+  },
+  {
+   "fieldname": "ats_synonyms",
+   "fieldtype": "Table",
+   "label": "Extra synonyms (optional)",
+   "options": "ATS Synonym",
+   "description": "Not required: synonyms are taken from each Job Opening automatically. Add rows here only for company-wide jargon."
+  },
+  {
+   "fieldname": "sec_r2",
+   "fieldtype": "Section Break",
+   "label": "Proposals, auditor and evals"
+  },
+  {
+   "fieldname": "proposal_expiry_days",
+   "fieldtype": "Int",
+   "label": "Proposals expire after (days)",
+   "default": "7",
+   "description": "Unapplied proposals change status to Expired; they are never deleted."
+  },
+  {
+   "fieldname": "analytics_doctypes",
+   "fieldtype": "Small Text",
+   "label": "Doctypes the analytics agent may aggregate (one per line)"
+  },
+  {
+   "fieldname": "auditor_enabled",
+   "fieldtype": "Check",
+   "label": "Auditor: daily scan and monthly pack",
+   "default": "1"
+  },
+  {
+   "fieldname": "aud_max_runs_per_user_day",
+   "fieldtype": "Int",
+   "label": "Auditor: flag users above N requests per day",
+   "default": "50"
+  },
+  {
+   "fieldname": "aud_denials_threshold",
+   "fieldtype": "Int",
+   "label": "Auditor: flag N permission denials per user per day",
+   "default": "5"
+  },
+  {
+   "fieldname": "col_au1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "aud_after_hours_start",
+   "fieldtype": "Time",
+   "label": "Auditor: after-hours starts (local)",
+   "default": "21:00:00"
+  },
+  {
+   "fieldname": "aud_after_hours_end",
+   "fieldtype": "Time",
+   "label": "Auditor: after-hours ends (local)",
+   "default": "05:00:00"
+  },
+  {
+   "fieldname": "evals_weekly",
+   "fieldtype": "Check",
+   "label": "Run evals weekly (Sunday 05:00 local)",
+   "default": "0"
+  },
+  {
+   "fieldname": "sec_privacy",
+   "fieldtype": "Section Break",
+   "label": "Privacy, retention and logging"
+  },
+  {
+   "fieldname": "store_prompts",
+   "fieldtype": "Select",
+   "label": "Store prompts and responses",
+   "options": "Masked\nFull\nHash only",
+   "default": "Masked",
+   "description": "Masked replaces emails, phone numbers and ID-like numbers before storing."
+  },
+  {
+   "fieldname": "log_retention_months",
+   "fieldtype": "Int",
+   "label": "Audit log retention (months, minimum 6)",
+   "default": "12",
+   "description": "Nothing is flagged for removal before this age. DPDP Rules are reported to require one year for access logs; confirm with the DPO."
+  },
+  {
+   "fieldname": "content_retention_months",
+   "fieldtype": "Int",
+   "label": "CV text and report retention (months, minimum 6)",
+   "default": "6"
+  },
+  {
+   "fieldname": "opt_out_note",
+   "fieldtype": "HTML",
+   "label": "Opt Out Note",
+   "options": "<p class='text-muted'>Users can switch AI agents off for themselves from the Ask-an-agent panel. Manual processes never depend on an agent.</p>"
+  }
+ ],
+ "field_order": [
+  "sec_general",
+  "enabled",
+  "kill_switch",
+  "kill_reason",
+  "model_calls_approved",
+  "sec_provider",
+  "provider",
+  "default_model",
+  "fallback_model",
+  "col_p1",
+  "azure_endpoint",
+  "azure_api_version",
+  "azure_api_key",
+  "anthropic_api_key",
+  "anthropic_workspace_id",
+  "request_timeout",
+  "sec_limits",
+  "monthly_token_budget",
+  "daily_token_budget",
+  "per_user_daily_token_budget",
+  "col_l1",
+  "per_run_token_cap",
+  "max_tool_steps",
+  "per_user_runs_per_hour",
+  "over_budget_action",
+  "sec_prices",
+  "prices",
+  "sec_atlas",
+  "atlas_enabled",
+  "atlas_time",
+  "timezone",
+  "col_a1",
+  "atlas_recipients",
+  "atlas_plan_limit",
+  "atlas_include_weekends",
+  "sec_tara",
+  "tara_enabled",
+  "sla_auto_send",
+  "col_t1",
+  "sla_quiet_start",
+  "sla_quiet_end",
+  "sec_sentinel",
+  "sentinel_enabled",
+  "sentinel_time",
+  "col_s1",
+  "sentinel_lookback_days",
+  "sentinel_doctypes",
+  "sec_ats",
+  "ats_auto_score",
+  "w_must",
+  "w_nice",
+  "w_exp",
+  "w_role",
+  "col_w1",
+  "w_edu",
+  "w_loc",
+  "w_sal",
+  "band_strong",
+  "band_good",
+  "band_partial",
+  "ats_synonyms",
+  "sec_r2",
+  "proposal_expiry_days",
+  "analytics_doctypes",
+  "auditor_enabled",
+  "aud_max_runs_per_user_day",
+  "aud_denials_threshold",
+  "col_au1",
+  "aud_after_hours_start",
+  "aud_after_hours_end",
+  "evals_weekly",
+  "sec_privacy",
+  "store_prompts",
+  "log_retention_months",
+  "content_retention_months",
+  "opt_out_note"
+ ],
+ "permissions": [
+  {
+   "role": "AI Agent Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "export": 0
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "write": 1
+  }
+ ],
+ "istable": 0,
+ "issingle": 1,
+ "track_changes": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "modified": "2026-10-07 12:00:00.000000",
+ "owner": "Administrator",
+ "editable_grid": 0,
+ "links": []
+}

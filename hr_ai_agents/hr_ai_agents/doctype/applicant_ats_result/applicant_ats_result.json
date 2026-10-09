@@ -1,0 +1,230 @@
+{
+ "doctype": "DocType",
+ "name": "Applicant ATS Result",
+ "module": "HR AI Agents",
+ "engine": "InnoDB",
+ "custom": 0,
+ "fields": [
+  {
+   "fieldname": "applicant",
+   "fieldtype": "Link",
+   "label": "Job Applicant",
+   "options": "Job Applicant",
+   "in_list_view": 1,
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "applicant_name",
+   "fieldtype": "Data",
+   "label": "Applicant name",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "job_opening",
+   "fieldtype": "Link",
+   "label": "Job Opening",
+   "options": "Job Opening",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "score",
+   "fieldtype": "Int",
+   "label": "Score (0-100)",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "band",
+   "fieldtype": "Data",
+   "label": "Band",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "is_latest",
+   "fieldtype": "Check",
+   "label": "Latest",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "method",
+   "fieldtype": "Select",
+   "label": "Method",
+   "options": "Deterministic only\nDeterministic + AI summary",
+   "read_only": 1
+  },
+  {
+   "fieldname": "model",
+   "fieldtype": "Data",
+   "label": "Model",
+   "read_only": 1
+  },
+  {
+   "fieldname": "criteria_version",
+   "fieldtype": "Int",
+   "label": "Criteria version",
+   "read_only": 1
+  },
+  {
+   "fieldname": "scored_on",
+   "fieldtype": "Datetime",
+   "label": "Scored on",
+   "read_only": 1
+  },
+  {
+   "fieldname": "scored_by",
+   "fieldtype": "Link",
+   "label": "Scored by",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "run",
+   "fieldtype": "Data",
+   "label": "Run",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s2",
+   "fieldtype": "Section Break",
+   "label": "Result"
+  },
+  {
+   "fieldname": "summary",
+   "fieldtype": "Text",
+   "label": "Work profile summary",
+   "read_only": 1
+  },
+  {
+   "fieldname": "strengths",
+   "fieldtype": "Small Text",
+   "label": "Strengths",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gaps",
+   "fieldtype": "Small Text",
+   "label": "Gaps",
+   "read_only": 1
+  },
+  {
+   "fieldname": "interview_questions",
+   "fieldtype": "Text",
+   "label": "Suggested interview questions",
+   "read_only": 1
+  },
+  {
+   "fieldname": "risk_flags",
+   "fieldtype": "Small Text",
+   "label": "Risk flags",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s3",
+   "fieldtype": "Section Break",
+   "label": "Evidence"
+  },
+  {
+   "fieldname": "breakdown",
+   "fieldtype": "Code",
+   "label": "Score breakdown",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "matched",
+   "fieldtype": "Code",
+   "label": "Matched requirements",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "missing",
+   "fieldtype": "Code",
+   "label": "Missing requirements",
+   "options": "JSON",
+   "read_only": 1
+  }
+ ],
+ "field_order": [
+  "applicant",
+  "applicant_name",
+  "job_opening",
+  "score",
+  "band",
+  "is_latest",
+  "c1",
+  "method",
+  "model",
+  "criteria_version",
+  "scored_on",
+  "scored_by",
+  "run",
+  "s2",
+  "summary",
+  "strengths",
+  "gaps",
+  "interview_questions",
+  "risk_flags",
+  "s3",
+  "breakdown",
+  "matched",
+  "missing"
+ ],
+ "permissions": [
+  {
+   "role": "HR Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "HR User",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "Recruitment Specialist",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "AI Agent Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "AI Compliance Auditor",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  }
+ ],
+ "istable": 0,
+ "issingle": 0,
+ "track_changes": 0,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "modified": "2026-10-07 12:00:00.000000",
+ "owner": "Administrator",
+ "editable_grid": 0,
+ "links": [],
+ "autoname": "ATS-.#####"
+}

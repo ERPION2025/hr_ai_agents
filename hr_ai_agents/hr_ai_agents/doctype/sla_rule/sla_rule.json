@@ -1,0 +1,174 @@
+{
+ "doctype": "DocType",
+ "name": "SLA Rule",
+ "module": "HR AI Agents",
+ "engine": "InnoDB",
+ "custom": 0,
+ "fields": [
+  {
+   "fieldname": "rule_name",
+   "fieldtype": "Data",
+   "label": "Rule name",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "label": "Applies to",
+   "options": "DocType",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "filters_json",
+   "fieldtype": "Code",
+   "label": "Filters (JSON)",
+   "options": "JSON",
+   "default": "{}",
+   "description": "Which records the clock runs on, e.g. {\"status\": \"Open\", \"custom_pushed_to_vendor\": 1}"
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "clock_mode",
+   "fieldtype": "Select",
+   "label": "Clock",
+   "options": "Elapsed since start\nDue date field",
+   "default": "Elapsed since start"
+  },
+  {
+   "fieldname": "start_field",
+   "fieldtype": "Data",
+   "label": "Start field",
+   "description": "Date/Datetime field where the clock starts (blank = creation)",
+   "depends_on": "eval:doc.clock_mode=='Elapsed since start'"
+  },
+  {
+   "fieldname": "due_field",
+   "fieldtype": "Data",
+   "label": "Due date field",
+   "depends_on": "eval:doc.clock_mode=='Due date field'"
+  },
+  {
+   "fieldname": "target_days",
+   "fieldtype": "Float",
+   "label": "Target (days)",
+   "description": "Elapsed mode: allowed days. Due-date mode: window length used for the warn threshold."
+  },
+  {
+   "fieldname": "target_days_field",
+   "fieldtype": "Data",
+   "label": "Target days field",
+   "description": "Optional field on the record that holds its own target (overrides Target)"
+  },
+  {
+   "fieldname": "s2",
+   "fieldtype": "Section Break",
+   "label": "Alerts"
+  },
+  {
+   "fieldname": "warn_at_pct",
+   "fieldtype": "Int",
+   "label": "Warn at % of target",
+   "default": "80"
+  },
+  {
+   "fieldname": "escalate_after_days",
+   "fieldtype": "Int",
+   "label": "Escalate after N days overdue",
+   "default": "3"
+  },
+  {
+   "fieldname": "notify_roles",
+   "fieldtype": "Small Text",
+   "label": "Notify roles (one per line)"
+  },
+  {
+   "fieldname": "notify_fields",
+   "fieldtype": "Small Text",
+   "label": "Also notify users in fields (one per line)",
+   "description": "e.g. owner, reports_to_user. Fields must hold a User or email."
+  },
+  {
+   "fieldname": "vendor_email_field",
+   "fieldtype": "Data",
+   "label": "Vendor (Supplier) field",
+   "description": "If set, the supplier's email on that field is also notified"
+  },
+  {
+   "fieldname": "title_field",
+   "fieldtype": "Data",
+   "label": "Title field for messages"
+  }
+ ],
+ "field_order": [
+  "rule_name",
+  "enabled",
+  "reference_doctype",
+  "filters_json",
+  "c1",
+  "clock_mode",
+  "start_field",
+  "due_field",
+  "target_days",
+  "target_days_field",
+  "s2",
+  "warn_at_pct",
+  "escalate_after_days",
+  "notify_roles",
+  "notify_fields",
+  "vendor_email_field",
+  "title_field"
+ ],
+ "permissions": [
+  {
+   "role": "AI Agent Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "export": 0
+  },
+  {
+   "role": "HR Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "AI Compliance Auditor",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "write": 1
+  }
+ ],
+ "istable": 0,
+ "issingle": 0,
+ "track_changes": 0,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "modified": "2026-10-07 12:00:00.000000",
+ "owner": "Administrator",
+ "editable_grid": 0,
+ "links": [],
+ "autoname": "field:rule_name"
+}

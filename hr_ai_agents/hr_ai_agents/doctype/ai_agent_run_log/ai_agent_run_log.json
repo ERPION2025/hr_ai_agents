@@ -1,0 +1,237 @@
+{
+ "doctype": "DocType",
+ "name": "AI Agent Run Log",
+ "module": "HR AI Agents",
+ "engine": "InnoDB",
+ "custom": 0,
+ "fields": [
+  {
+   "fieldname": "agent",
+   "fieldtype": "Link",
+   "label": "Agent",
+   "options": "AI Agent Profile",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "run_user",
+   "fieldtype": "Link",
+   "label": "Requested by",
+   "options": "User",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "trigger",
+   "fieldtype": "Select",
+   "label": "Trigger",
+   "options": "User\nScheduler",
+   "read_only": 1
+  },
+  {
+   "fieldname": "outcome",
+   "fieldtype": "Select",
+   "label": "Outcome",
+   "options": "Success\nError\nBlocked",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "session",
+   "fieldtype": "Link",
+   "label": "Session",
+   "options": "AI Session Log",
+   "read_only": 1
+  },
+  {
+   "fieldname": "provider",
+   "fieldtype": "Data",
+   "label": "Provider",
+   "read_only": 1
+  },
+  {
+   "fieldname": "model",
+   "fieldtype": "Data",
+   "label": "Model",
+   "read_only": 1
+  },
+  {
+   "fieldname": "latency_ms",
+   "fieldtype": "Int",
+   "label": "Latency (ms)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s2",
+   "fieldtype": "Section Break",
+   "label": "Usage"
+  },
+  {
+   "fieldname": "input_tokens",
+   "fieldtype": "Int",
+   "label": "Input tokens",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "output_tokens",
+   "fieldtype": "Int",
+   "label": "Output tokens",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cost",
+   "fieldtype": "Float",
+   "label": "Cost",
+   "precision": "6",
+   "read_only": 1,
+   "description": "In the currency of the price table"
+  },
+  {
+   "fieldname": "s3",
+   "fieldtype": "Section Break",
+   "label": "Content"
+  },
+  {
+   "fieldname": "prompt",
+   "fieldtype": "Long Text",
+   "label": "Prompt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "response",
+   "fieldtype": "Long Text",
+   "label": "Response",
+   "read_only": 1
+  },
+  {
+   "fieldname": "error",
+   "fieldtype": "Small Text",
+   "label": "Error",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tool_calls",
+   "fieldtype": "Code",
+   "label": "Tool calls",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "records_touched",
+   "fieldtype": "Code",
+   "label": "Records read / created",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "context",
+   "fieldtype": "Code",
+   "label": "Context",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s4",
+   "fieldtype": "Section Break",
+   "label": "Feedback and integrity"
+  },
+  {
+   "fieldname": "feedback_rating",
+   "fieldtype": "Select",
+   "label": "Feedback",
+   "options": "\nUp\nDown",
+   "read_only": 1
+  },
+  {
+   "fieldname": "feedback_note",
+   "fieldtype": "Small Text",
+   "label": "Feedback note",
+   "read_only": 1
+  },
+  {
+   "fieldname": "prev_hash",
+   "fieldtype": "Data",
+   "label": "Previous hash",
+   "read_only": 1
+  },
+  {
+   "fieldname": "row_hash",
+   "fieldtype": "Data",
+   "label": "Row hash",
+   "read_only": 1
+  }
+ ],
+ "field_order": [
+  "agent",
+  "run_user",
+  "trigger",
+  "outcome",
+  "c1",
+  "session",
+  "provider",
+  "model",
+  "latency_ms",
+  "s2",
+  "input_tokens",
+  "output_tokens",
+  "cost",
+  "s3",
+  "prompt",
+  "response",
+  "error",
+  "tool_calls",
+  "records_touched",
+  "context",
+  "s4",
+  "feedback_rating",
+  "feedback_note",
+  "prev_hash",
+  "row_hash"
+ ],
+ "permissions": [
+  {
+   "role": "AI Agent Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "AI Compliance Auditor",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "AI Agent User",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "if_owner": 1
+  }
+ ],
+ "istable": 0,
+ "issingle": 0,
+ "track_changes": 0,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "modified": "2026-10-07 12:00:00.000000",
+ "owner": "Administrator",
+ "editable_grid": 0,
+ "links": [],
+ "autoname": "AIRUN-.#######"
+}

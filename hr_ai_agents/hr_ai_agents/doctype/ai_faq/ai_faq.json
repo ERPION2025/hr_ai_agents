@@ -1,0 +1,222 @@
+{
+ "doctype": "DocType",
+ "name": "AI FAQ",
+ "module": "HR AI Agents",
+ "engine": "InnoDB",
+ "custom": 0,
+ "fields": [
+  {
+   "fieldname": "question",
+   "fieldtype": "Small Text",
+   "label": "Question",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "agent",
+   "fieldtype": "Link",
+   "label": "Agent",
+   "options": "AI Agent Profile",
+   "in_list_view": 1,
+   "description": "Blank = shown for every agent."
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Candidate\nApproved\nNeeds review\nRetired\nRejected",
+   "default": "Candidate",
+   "in_list_view": 1,
+   "description": "Only Approved FAQs are ever served. Candidates are created from helpful ratings and wait for an HR Manager."
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_verified",
+   "fieldtype": "Date",
+   "label": "Last verified",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved by",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approved_on",
+   "fieldtype": "Datetime",
+   "label": "Approved on",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s2",
+   "fieldtype": "Section Break",
+   "label": "Answer"
+  },
+  {
+   "fieldname": "variants",
+   "fieldtype": "Small Text",
+   "label": "Other ways to ask it (one per line)",
+   "description": "Adds matching phrases. Matching is by keywords, so list the common wordings."
+  },
+  {
+   "fieldname": "answer",
+   "fieldtype": "Long Text",
+   "label": "Answer",
+   "reqd": 1,
+   "description": "Shown to users exactly as written (Markdown allowed). Must not contain personal data or figures that change."
+  },
+  {
+   "fieldname": "s3",
+   "fieldtype": "Section Break",
+   "label": "Who can see it"
+  },
+  {
+   "fieldname": "roles",
+   "fieldtype": "Table",
+   "label": "Visible to roles",
+   "options": "AI Visible Role",
+   "description": "Required before approval. Use the role 'All' for everyone with AI access."
+  },
+  {
+   "fieldname": "s4",
+   "fieldtype": "Section Break",
+   "label": "Source and use"
+  },
+  {
+   "fieldname": "source_policy",
+   "fieldtype": "Link",
+   "label": "Source policy",
+   "options": "AI Policy Document",
+   "description": "If the policy version changes, this FAQ stops being served until an HR Manager verifies it again."
+  },
+  {
+   "fieldname": "source_policy_version",
+   "fieldtype": "Data",
+   "label": "Policy version when verified",
+   "read_only": 1
+  },
+  {
+   "fieldname": "source_run",
+   "fieldtype": "Link",
+   "label": "Created from run",
+   "options": "AI Agent Run Log",
+   "read_only": 1
+  },
+  {
+   "fieldname": "c2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "asked_count",
+   "fieldtype": "Int",
+   "label": "Times asked (candidate)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "hits",
+   "fieldtype": "Int",
+   "label": "Times served",
+   "read_only": 1
+  },
+  {
+   "fieldname": "helpful",
+   "fieldtype": "Int",
+   "label": "Helpful",
+   "read_only": 1
+  },
+  {
+   "fieldname": "not_helpful",
+   "fieldtype": "Int",
+   "label": "Not helpful",
+   "read_only": 1
+  },
+  {
+   "fieldname": "question_key",
+   "fieldtype": "Data",
+   "label": "Match key",
+   "read_only": 1,
+   "hidden": 1
+  }
+ ],
+ "field_order": [
+  "question",
+  "agent",
+  "status",
+  "c1",
+  "last_verified",
+  "approved_by",
+  "approved_on",
+  "s2",
+  "variants",
+  "answer",
+  "s3",
+  "roles",
+  "s4",
+  "source_policy",
+  "source_policy_version",
+  "source_run",
+  "c2",
+  "asked_count",
+  "hits",
+  "helpful",
+  "not_helpful",
+  "question_key"
+ ],
+ "permissions": [
+  {
+   "role": "HR Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "export": 0
+  },
+  {
+   "role": "HR User",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "AI Agent Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "AI Compliance Auditor",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "export": 0
+  }
+ ],
+ "istable": 0,
+ "issingle": 0,
+ "track_changes": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "modified": "2026-10-07 12:00:00.000000",
+ "owner": "Administrator",
+ "editable_grid": 0,
+ "links": [],
+ "autoname": "FAQ-.#####",
+ "title_field": "question",
+ "search_fields": "question,agent,status"
+}

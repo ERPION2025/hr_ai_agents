@@ -1,0 +1,248 @@
+{
+ "doctype": "DocType",
+ "name": "AI Proposal",
+ "module": "HR AI Agents",
+ "engine": "InnoDB",
+ "custom": 0,
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "read_only": 1,
+   "in_list_view": 1,
+   "length": 300
+  },
+  {
+   "fieldname": "agent",
+   "fieldtype": "Link",
+   "label": "Agent",
+   "options": "AI Agent Profile",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "operation",
+   "fieldtype": "Select",
+   "label": "Operation",
+   "options": "Create draft\nUpdate fields\nDraft text",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Pending\nApplied\nRejected\nExpired\nFailed",
+   "default": "Pending",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "requested_by",
+   "fieldtype": "Link",
+   "label": "Requested by",
+   "options": "User",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "label": "Record type",
+   "options": "DocType",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reference_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Record (for updates)",
+   "options": "reference_doctype",
+   "read_only": 1
+  },
+  {
+   "fieldname": "expires_on",
+   "fieldtype": "Datetime",
+   "label": "Expires on",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s2",
+   "fieldtype": "Section Break",
+   "label": "What the agent proposes"
+  },
+  {
+   "fieldname": "rationale",
+   "fieldtype": "Small Text",
+   "label": "Why",
+   "read_only": 1
+  },
+  {
+   "fieldname": "diff_html",
+   "fieldtype": "Text Editor",
+   "label": "Changes (review before applying)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "text",
+   "fieldtype": "Long Text",
+   "label": "Draft text",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s3",
+   "fieldtype": "Section Break",
+   "label": "Payload and outcome"
+  },
+  {
+   "fieldname": "values",
+   "fieldtype": "Code",
+   "label": "Field values",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rows",
+   "fieldtype": "Code",
+   "label": "Table rows",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "base_modified",
+   "fieldtype": "Data",
+   "label": "Record version when proposed",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "run",
+   "fieldtype": "Data",
+   "label": "Run",
+   "read_only": 1
+  },
+  {
+   "fieldname": "applied_by",
+   "fieldtype": "Link",
+   "label": "Applied / rejected by",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "applied_on",
+   "fieldtype": "Datetime",
+   "label": "Applied / rejected on",
+   "read_only": 1
+  },
+  {
+   "fieldname": "result_doctype",
+   "fieldtype": "Link",
+   "label": "Result type",
+   "options": "DocType",
+   "read_only": 1
+  },
+  {
+   "fieldname": "result_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Result record",
+   "options": "result_doctype",
+   "read_only": 1
+  },
+  {
+   "fieldname": "error",
+   "fieldtype": "Small Text",
+   "label": "Error",
+   "read_only": 1
+  }
+ ],
+ "field_order": [
+  "title",
+  "agent",
+  "operation",
+  "status",
+  "c1",
+  "requested_by",
+  "reference_doctype",
+  "reference_name",
+  "expires_on",
+  "s2",
+  "rationale",
+  "diff_html",
+  "text",
+  "s3",
+  "values",
+  "rows",
+  "base_modified",
+  "run",
+  "applied_by",
+  "applied_on",
+  "result_doctype",
+  "result_name",
+  "error"
+ ],
+ "permissions": [
+  {
+   "role": "AI Agent Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "AI Compliance Auditor",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "AI Agent User",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "if_owner": 1
+  },
+  {
+   "role": "HR Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "if_owner": 1
+  },
+  {
+   "role": "HR User",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "if_owner": 1
+  },
+  {
+   "role": "Employee",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "if_owner": 1
+  }
+ ],
+ "istable": 0,
+ "issingle": 0,
+ "track_changes": 0,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "modified": "2026-10-07 12:00:00.000000",
+ "owner": "Administrator",
+ "editable_grid": 0,
+ "links": [],
+ "autoname": "AIP-.#######",
+ "title_field": "title"
+}

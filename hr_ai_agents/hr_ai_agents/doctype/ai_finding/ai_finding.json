@@ -1,0 +1,203 @@
+{
+ "doctype": "DocType",
+ "name": "AI Finding",
+ "module": "HR AI Agents",
+ "engine": "InnoDB",
+ "custom": 0,
+ "fields": [
+  {
+   "fieldname": "message",
+   "fieldtype": "Data",
+   "label": "Finding",
+   "reqd": 1,
+   "in_list_view": 1,
+   "length": 500
+  },
+  {
+   "fieldname": "severity",
+   "fieldtype": "Select",
+   "label": "Severity",
+   "options": "High\nMedium\nLow",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Open\nAcknowledged\nFixed\nDismissed\nResolved (auto)",
+   "default": "Open",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "finding_type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "Missing field\nAnomaly\nIntegrity\nWorkflow\nDuplicate\nSalary or budget\nAgent policy",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "label": "Record type",
+   "options": "DocType",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "reference_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Record",
+   "options": "reference_doctype",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "field_name",
+   "fieldtype": "Data",
+   "label": "Field"
+  },
+  {
+   "fieldname": "owner_user",
+   "fieldtype": "Link",
+   "label": "Owner",
+   "options": "User"
+  },
+  {
+   "fieldname": "s2",
+   "fieldtype": "Section Break",
+   "label": "Detail"
+  },
+  {
+   "fieldname": "impact",
+   "fieldtype": "Small Text",
+   "label": "Impact"
+  },
+  {
+   "fieldname": "evidence",
+   "fieldtype": "Long Text",
+   "label": "Evidence"
+  },
+  {
+   "fieldname": "suggested_fix",
+   "fieldtype": "Small Text",
+   "label": "Suggested fix"
+  },
+  {
+   "fieldname": "dismissed_reason",
+   "fieldtype": "Small Text",
+   "label": "Dismissal reason",
+   "depends_on": "eval:doc.status=='Dismissed'"
+  },
+  {
+   "fieldname": "s3",
+   "fieldtype": "Section Break",
+   "label": "Tracking"
+  },
+  {
+   "fieldname": "rule",
+   "fieldtype": "Data",
+   "label": "Rule",
+   "read_only": 1
+  },
+  {
+   "fieldname": "detected_by",
+   "fieldtype": "Data",
+   "label": "Detected by",
+   "read_only": 1
+  },
+  {
+   "fieldname": "detected_on",
+   "fieldtype": "Datetime",
+   "label": "Detected on",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_seen",
+   "fieldtype": "Datetime",
+   "label": "Last seen",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fingerprint",
+   "fieldtype": "Data",
+   "label": "Fingerprint",
+   "read_only": 1,
+   "unique": 1,
+   "hidden": 1
+  }
+ ],
+ "field_order": [
+  "message",
+  "severity",
+  "status",
+  "finding_type",
+  "c1",
+  "reference_doctype",
+  "reference_name",
+  "field_name",
+  "owner_user",
+  "s2",
+  "impact",
+  "evidence",
+  "suggested_fix",
+  "dismissed_reason",
+  "s3",
+  "rule",
+  "detected_by",
+  "detected_on",
+  "last_seen",
+  "fingerprint"
+ ],
+ "permissions": [
+  {
+   "role": "AI Agent Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "write": 1
+  },
+  {
+   "role": "AI Agent User",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "write": 1
+  },
+  {
+   "role": "AI Compliance Auditor",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "write": 1
+  },
+  {
+   "role": "HR Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "write": 1
+  }
+ ],
+ "istable": 0,
+ "issingle": 0,
+ "track_changes": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "modified": "2026-10-07 12:00:00.000000",
+ "owner": "Administrator",
+ "editable_grid": 0,
+ "links": [],
+ "autoname": "AIF-.#####",
+ "title_field": "message"
+}

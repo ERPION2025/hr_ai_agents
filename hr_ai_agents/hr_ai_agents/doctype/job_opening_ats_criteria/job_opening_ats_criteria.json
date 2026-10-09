@@ -1,0 +1,148 @@
+{
+ "doctype": "DocType",
+ "name": "Job Opening ATS Criteria",
+ "module": "HR AI Agents",
+ "engine": "InnoDB",
+ "custom": 0,
+ "fields": [
+  {
+   "fieldname": "job_opening",
+   "fieldtype": "Link",
+   "label": "Job Opening",
+   "options": "Job Opening",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "must_have",
+   "fieldtype": "Small Text",
+   "label": "Must-have skills (one per line or comma separated)",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "nice_have",
+   "fieldtype": "Small Text",
+   "label": "Nice-to-have skills"
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "min_years",
+   "fieldtype": "Float",
+   "label": "Minimum years of experience"
+  },
+  {
+   "fieldname": "certifications",
+   "fieldtype": "Small Text",
+   "label": "Certifications / education required"
+  },
+  {
+   "fieldname": "synonyms",
+   "fieldtype": "Small Text",
+   "label": "Synonyms for this opening (term: alias, alias)",
+   "description": "Filled automatically from the opening. Edit freely. Built-in synonyms and spelling variants are always applied as well."
+  },
+  {
+   "fieldname": "source_hash",
+   "fieldtype": "Data",
+   "label": "Source fingerprint",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "label": "Source",
+   "options": "Extracted from fields\nExtracted by AI\nManual",
+   "default": "Manual"
+  },
+  {
+   "fieldname": "version",
+   "fieldtype": "Int",
+   "label": "Version",
+   "default": "1",
+   "read_only": 1
+  },
+  {
+   "fieldname": "weights_override",
+   "fieldtype": "Code",
+   "label": "Weights override (JSON)",
+   "options": "JSON",
+   "description": "e.g. {\"must_have\": 50, \"nice_have\": 10}"
+  }
+ ],
+ "field_order": [
+  "job_opening",
+  "must_have",
+  "nice_have",
+  "c1",
+  "min_years",
+  "certifications",
+  "synonyms",
+  "source_hash",
+  "source",
+  "version",
+  "weights_override"
+ ],
+ "permissions": [
+  {
+   "role": "HR Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "HR User",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Recruitment Specialist",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "AI Agent Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "AI Compliance Auditor",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "permlevel": 0,
+   "write": 1,
+   "create": 1
+  }
+ ],
+ "istable": 0,
+ "issingle": 0,
+ "track_changes": 0,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "modified": "2026-10-07 12:00:00.000000",
+ "owner": "Administrator",
+ "editable_grid": 0,
+ "links": [],
+ "autoname": "field:job_opening"
+}
